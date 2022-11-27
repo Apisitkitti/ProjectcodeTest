@@ -69,9 +69,12 @@ class ListData
      {
         return true;
      }
-    
+    else if(person is Student student)
+    {
+        return false;
     }
-    return false;
+    }
+    return Adminchecker();
    }
    //ส่วนที่เป็นสำหรับนำข้อมูลมาโชว์ออกมาFetch
    public void FetchData()

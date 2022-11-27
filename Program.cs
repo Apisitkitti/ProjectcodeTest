@@ -108,7 +108,9 @@ enum TeacherMenu
         }
         else if(checkdata == false)
         {
+            Console.Clear();
             Console.WriteLine("This user already register");
+            Console.ReadLine();
             NewTeacher();
         }  
 
