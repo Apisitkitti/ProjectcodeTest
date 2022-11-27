@@ -64,13 +64,10 @@ class ListData
                 return true;
             }
         }
-        else  
-        {
-            return false;
-        }
+        
      }
      }
-     return LoginCheck(id,password);
+     return false;
    }
    //check สำหรับส่วนMenuว่าเปนจารย์หรือนักเรียน(Admin)
    public bool Adminchecker(string id, string password)

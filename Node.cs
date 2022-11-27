@@ -1,30 +1,19 @@
-class Node<T> 
-{
-    private T value;
-    private Node<T> next = null;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-    public Node(T value)
-    {
-        this.SetValue(value);
-    }
 
-    public void SetNext(Node<T> next)
+    public class Node
     {
-        this.next = next;
-    }
+        public int element;
+        public Node next;
+        public Node prev;
 
-    public Node<T> Next()
-    {
-        return this.next;
+        public Node(int e, Node n, Node p)
+        {
+            element = e;
+            next = n;
+            prev = p;
+        }
     }
-
-    public T GetValue()
-    {
-        return this.value;
-    }
-
-    public void SetValue(T value)
-    {
-        this.value = value;
-    }
-}
