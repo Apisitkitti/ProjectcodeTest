@@ -169,7 +169,7 @@ enum TeacherMenu
             PressToContinue();
         }
         
-        //ส่วนMenuLoginนักศึกษา
+        //ส่วนMenuLoginนักศึกษาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาา
         static void StudentReserve(string id , string password)
         {
             Console.Clear();
