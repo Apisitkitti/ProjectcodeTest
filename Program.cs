@@ -127,11 +127,11 @@ enum TeacherMenu
         string Password = Console.ReadLine();
         if(data.LoginCheck(ID,Password) == true)
         {
-            if(data.Adminchecker() == true )
+            if(data.Adminchecker(ID,Password) == true )
             {
                 TeacherAccept(ID,Password);
             }
-            else if(data.Adminchecker() == false)
+            else if(data.Adminchecker(ID,Password) == false)
             {
                 StudentReserve(ID,Password);
             }

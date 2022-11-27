@@ -57,25 +57,36 @@ class ListData
                 return true;
             }
         }
+        else 
+        {
+            return false;
+        }
      }
-     return false;
+     return LoginCheck(id,password);
    }
    //check สำหรับส่วนMenuว่าเปนจารย์หรือนักเรียน(Admin)
-   public bool Adminchecker()
+   public bool Adminchecker(string id, string password)
    {
     foreach(Person person in peoplelist)
     {
      if(person is Teacher teacher)
      {
-        return true;
+          if(id.Equals(teacher.GetId())&&(password.Equals(teacher.GetPassword())))
+            {
+                return true;
+            }
      }
     else if(person is Student student)
     {
-        return false;
+            if(id.Equals(student.GetID())&&password.Equals(student.GetPassword()))
+            {
+                return false;
+            }
     }
-    }
-    return Adminchecker();
+    
    }
+   return Adminchecker(id,password);
+}
    //ส่วนที่เป็นสำหรับนำข้อมูลมาโชว์ออกมาFetch
    public void FetchData()
    {
