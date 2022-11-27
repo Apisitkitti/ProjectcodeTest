@@ -75,17 +75,21 @@ enum TeacherMenu
     static void NewStudent()
     {
         Console.Clear();
-        Student student = new Student(InputName(),InputSurname(),InputID(),InputClass_Year(),Password());
-        Student checkdata = data.CheckStudent(student);
-        if(checkdata != null)
+        string name = InputName();
+        string surname = InputSurname();
+        Student student = new Student(name,surname,InputID(),InputClass_Year(),Password());
+        
+        bool checkdata = data.CheckRegis(name,surname);
+        if(checkdata == true)
         {
             Program.data.PeopleAdd(student);
             ChooseMenu();
         }
-        else if( checkdata == null)
+        else if(checkdata == false)
         {
             Console.Clear();
             Console.WriteLine("This user already register");
+            Console.ReadLine();
             NewStudent();
         }
      }
@@ -93,14 +97,16 @@ enum TeacherMenu
     static void NewTeacher()
     {
         Console.Clear();
-        Teacher teacher = new Teacher(InputName(),InputSurname(),InputCitizenId(),Password());
-        Teacher checkdata = data.CheckTeacher(teacher);
-        if(checkdata != null)
+         string name = InputName();
+        string surname = InputSurname();
+        Teacher teacher = new Teacher(name,surname,InputCitizenId(),Password());
+        bool checkdata = data.CheckRegis(name,surname);
+        if(checkdata == true)
         {
          Program.data.PeopleAdd(teacher);
         ChooseMenu();
         }
-        else if(checkdata == null)
+        else if(checkdata == false)
         {
             Console.WriteLine("This user already register");
             NewTeacher();

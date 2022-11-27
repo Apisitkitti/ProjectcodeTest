@@ -13,42 +13,30 @@ class ListData
        this.peoplelist.Add(person);
     }
     //ตัวเช็คนักเรียนหรือครู
-   public Student CheckStudent(Student check)
+   public bool CheckRegis(string name , string surname)
    {
-     if(peoplelist is Student)
+    
      {
-        foreach(Student student in peoplelist)
+        foreach(Person person in peoplelist)
         {
-            string name = check.GetName();
-            string surname = check.GetSurname();
-            string student_num = check.GetID();
-            if(student.GetName().Equals(name)&&student.GetSurname().Equals(surname)&&student.GetID().Equals(student_num))
-            {
-                return null;
-            }
-            
+             if(person is Teacher teacher)
+             {
+                if(teacher.GetName().Equals(name)&& teacher.GetSurname().Equals(surname))
+                {
+                    return false;
+                }
+             }
+              else if(person is Student student)
+              {
+                if(student.GetName().Equals(name)&& student.GetSurname().Equals(surname))
+                {
+                    return false;
+                }
+              }
+             
         }
      }
-     return check;
-   }
-  
-   public Teacher CheckTeacher(Teacher check)
-   {
-     if(peoplelist is Teacher)
-     {
-        foreach(Teacher teacher in peoplelist)
-        {
-            string name = check.GetName();
-            string surname = check.GetSurname();
-            string Teacher_num = check.GetId();
-            if(teacher.GetName().Equals(name)&&teacher.GetSurname().Equals(surname)&&teacher.GetId().Equals(Teacher_num))
-            {
-                return null;
-            }
-            
-        }
-     }
-     return check;
+     return true ;
    }
    //ส่วนlogin
    public bool LoginCheck(string id , string password)
