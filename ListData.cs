@@ -41,7 +41,14 @@ class ListData
    //ส่วนlogin
    public bool LoginCheck(string id , string password)
    {
-     foreach(Person person in peoplelist)
+    if(peoplelist.Count ==0)
+    {
+        return false;
+    }
+     
+     else if(peoplelist.Count > 0)
+     {
+        foreach(Person person in peoplelist)
      {
         if(person is Teacher teacher)
         {
@@ -57,10 +64,11 @@ class ListData
                 return true;
             }
         }
-        else 
+        else  
         {
             return false;
         }
+     }
      }
      return LoginCheck(id,password);
    }
