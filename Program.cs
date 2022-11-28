@@ -233,7 +233,13 @@ enum TeacherMenu
         }  
         static void AdminConfirm()
         {
-            Console.WriteLine("Commingsoon");
+           Console.Clear();
+           data.FetchData();
+           Console.WriteLine("************************************");
+           Console.Write("Pls CHoose Info to accept/reject: ");
+           int choose = InputChoice();
+           data.RoomDete(choose-1);
+           
         }
         
 
@@ -279,6 +285,10 @@ enum TeacherMenu
         Console.Write("Pls input amount of your student: ");
         return int.Parse(Console.ReadLine());
     }
+    public static int InputChoice()
+    {
+        return int.Parse(Console.ReadLine());
+    }
     
     //เตรียมตัวเพื่อโหลดข้อมูล่วงหน้าจะได้ไม่บึ้ม
     static void PersonListLoad()
@@ -315,9 +325,7 @@ enum TeacherMenu
                 {
                     Console.WriteLine("YOur student is more");
                     PressToContinue();
-                }
-                
-                
+                }     
             }
             else if(roomNum == 2)
             {

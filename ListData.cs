@@ -28,6 +28,11 @@ class ListData
     {
         this.listroominfo.Add(room);
     }
+    public void RoomDete(int choose)
+     {
+       listroom.RemoveAt(choose);
+     }
+
     
     //ตัวเช็คนักเรียนหรือครู
    public bool CheckRegis(string name , string surname)
@@ -145,10 +150,9 @@ class ListData
                     return true;
                 }
             }
-            return RoomAmountcheck(name,amount);
-        
-        
+            return RoomAmountcheck(name,amount);  
      }
+     
      
    
    //checkว่าคือใคร
@@ -172,9 +176,17 @@ class ListData
         }
     }
    }
-  
-
-    
-
-
+ //checkว่าห้องโล่งยัง
+ public bool Empty()
+ {
+    if(listroom.Count <0)
+    {
+        return false;
+    }
+    else if(listroom.Count > 0)
+    {
+        return true;
+    }
+    return Empty();
+ }
 }
