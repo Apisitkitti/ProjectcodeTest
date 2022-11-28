@@ -6,7 +6,8 @@ class ListData
     private List<Person> peoplelist;
     private List<Reserve>listroom;
     private List<Room>listroominfo;
-    private List<RoomSure>ConfirmedRoom;
+    private List<RoomSure> RoomSureList;
+   
     
     
     public ListData()
@@ -14,11 +15,13 @@ class ListData
         this.peoplelist = new List<Person>();
         this.listroom= new List<Reserve>();
         this.listroominfo= new List<Room>();
+      
     }
     public void RoomAdd(Reserve reserve)
     {
         this.listroom.Add(reserve);
     }
+    
 
     public void PeopleAdd(Person person)
     {
@@ -32,7 +35,8 @@ class ListData
      {
        listroom.RemoveAt(choose);
      }
-
+    
+   
     
     //ตัวเช็คนักเรียนหรือครู
    public bool CheckRegis(string name , string surname)
@@ -128,14 +132,24 @@ class ListData
    }
    public void ReserveRoom()
    {
-     foreach(Reserve reserveroom in listroom)
+    if(listroom.Count == 0)
+    {
+        Console.WriteLine("Not have any reserve");
+    }
+    else if(listroom.Count > 0)
+    {
+        foreach(Reserve reserveroom in listroom)
      {
         if(reserveroom is Room room)
         {
             Console.WriteLine("{0} {1} Reserve: {2} Amount: {3}",reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
         }
      }
+    }
+     
    }
+   
+
    //เงื่อนไขขนาดห้อง
    public bool RoomAmountcheck(string name,int amount )
    {

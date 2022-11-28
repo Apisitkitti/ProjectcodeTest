@@ -5,16 +5,14 @@ class RoomSure
 {
     string name;
     string surname;
-    string id;
-    string roomNum;
+    string roomname;
     int amount;
 
-    public RoomSure(string name,string surname,string id, string roomNum,int amount)
+    public RoomSure(string name,string surname,string roomname,int amount)
     {
         this.name = name;
         this.surname = surname;
-        this.id = id;
-        this.roomNum = roomNum;
+        this.roomname = roomname;
         this.amount = amount;
     }
     public string GetName()
@@ -25,9 +23,13 @@ class RoomSure
     {
         return this.surname;
     }
-    public string GetID()
+    public string GetRoomname()
     {
-        return this.id;
+        return this.roomname;
+    }
+    public int GetAmount()
+    {
+        return this.amount;
     }
     
 

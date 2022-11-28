@@ -351,11 +351,11 @@ enum TeacherMenu
                 if(data.RoomAmountcheck(Roomname,amount)  == true)
                 {
                  Program.data.RoomAdd(reserve);
-                 ChooseMenu();
+                    ChooseMenu();
                 }
                 else if(data.RoomAmountcheck(Roomname,amount)  == false)
                 {
-                    Console.WriteLine("THis room is already reserve");
+                    Console.WriteLine("This room is already reserve");
                     ChooseMenu();
                 }
             }
@@ -363,8 +363,8 @@ enum TeacherMenu
         //ห้อง
         static void Room()
         {
-            Room room1 = new Room("a","b","983",30);
-            Room room2 = new Room("a","b","993",40);
+            Room room1 = new Room("983",30);
+            Room room2 = new Room("993",40);
             data.RoomInfoAdd(room1);
             data.RoomInfoAdd(room2);
         }
