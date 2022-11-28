@@ -6,7 +6,7 @@ class ListData
     private List<Person> peoplelist;
     private List<Reserve>listroom;
     private List<Room>listroominfo;
-    private List<RoomSure> RoomSureList;
+    
    
     
     
