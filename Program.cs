@@ -234,13 +234,23 @@ enum TeacherMenu
         static void AdminConfirm()
         {
            Console.Clear();
-           data.ReserveRoom();
-           Console.WriteLine("************************************");
-           Console.Write("Pls CHoose Info to accept/reject: ");
-           int choose = InputChoice();
+           if(data.CheckDelete()== false)
+           {
+            Console.WriteLine("You dont have any reserve room");
+            Console.ReadLine();
+            BackToMainMemu();
+           }
+           else if(data.CheckDelete()== true)
+           {
+             data.ReserveRoom();
+             Console.WriteLine("************************************");
+             Console.Write("Pls CHoose Info to reject: ");
+            int choose = InputChoice();
             data.RoomDete(choose-1);
             Console.ReadLine();
             BackToMainMemu();
+           }
+            
            
         }
         

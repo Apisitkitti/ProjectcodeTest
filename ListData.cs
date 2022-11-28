@@ -132,7 +132,7 @@ class ListData
      {
         if(reserveroom is Room room)
         {
-            Console.WriteLine("{0} {1} Reserve: {2} Amount: {3}",reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetName(),reserveroom.GetAmount());
+            Console.WriteLine("{0} {1} Reserve: {2} Amount: {3}",reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
         }
      }
    }
@@ -174,8 +174,27 @@ class ListData
                 Console.WriteLine("{0} {1}",student.GetName(),student.GetSurname());
             }
         }
-    }
+    } 
    }
- 
+   //deletefunti
+    public bool CheckDelete()
+    {
+        if(listroom.Count == 0 )
+        {
+            return false;
+        }
+        else if(listroom.Count >0)
+        {
+            return true;
+        }
+        else if(listroom.Count == null)
+        {
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
  
 }
