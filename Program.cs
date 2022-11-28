@@ -26,11 +26,12 @@ enum TeacherMenu
 }
  class Program
 {
-    static ListData data;
-   
+    static ListData data; 
+    
     public static void Main()
     {
         PersonListLoad();
+        Room();
         ChooseMenu();
     }
     //Menu ตัวเลือก login หรือ register
@@ -273,19 +274,22 @@ enum TeacherMenu
       Console.Write("please input your Password: ");
       return Console.ReadLine();
     }
+    public static int InputAmount()
+    {
+        Console.Write("Pls input amount of your student: ");
+        return int.Parse(Console.ReadLine());
+    }
+    
     //เตรียมตัวเพื่อโหลดข้อมูล่วงหน้าจะได้ไม่บึ้ม
     static void PersonListLoad()
     {
         Program.data = new ListData();
-    }   
-
+    }
     //ส่วนเช็คห้อง
         static void CheckReserveRoom()
         {
         Console.Clear();
-        Console.WriteLine("---------------------------------------");
-        Console.WriteLine("                 Room.                 ");
-        Console.WriteLine("---------------------------------------");
+        Program.data.FetchData();
         PressToContinue();
         }
 
@@ -293,12 +297,55 @@ enum TeacherMenu
         static void Reserve()
         {
         Console.Clear();
-        Console.WriteLine("---------------------------------------");
-        Console.WriteLine("             comming soon              ");
-        Console.WriteLine("---------------------------------------");
-        PressToContinue();
+        Console.WriteLine("Pls choose your room");
+        Console.WriteLine("1.room 983\n2.room993 ");
+        int roomNum = int.Parse(Console.ReadLine());
+            if(roomNum == 1)
+            {
+                string name = "983" ;
+                int amount = InputAmount();
+                Reserve reserve = new Reserve(name,amount);
+                
+                if(data.RoomAmountcheck(name,amount)  == true)
+                {
+                 Program.data.RoomAdd(reserve);
+                 ChooseMenu();
+                }
+                else if(data.RoomAmountcheck(name,amount)  == false)
+                {
+                    Console.WriteLine("YOur student is more");
+                    PressToContinue();
+                }
+                
+                
+            }
+            else if(roomNum == 2)
+            {
+                string name = "993" ;
+                int amount = InputAmount();
+                Reserve reserve = new Reserve(name,amount);
+                if(data.RoomAmountcheck(name,amount)  == true)
+                {
+                 Program.data.RoomAdd(reserve);
+                 ChooseMenu();
+                }
+                else if(data.RoomAmountcheck(name,amount)  == false)
+                {
+                    Console.WriteLine("THis room is already reserve");
+                    ChooseMenu();
+                }
+            }
         }
-
+        //ห้อง
+        static void Room()
+        {
+            Room room1 = new Room("983",30);
+            Room room2 = new Room("993",40);
+            data.RoomInfoAdd(room1);
+            data.RoomInfoAdd(room2);
+        }
+    
+        
     //กลับสู่ main เมนู
         static void BackToMainMemu()
         {

@@ -4,14 +4,31 @@ using System;
 class ListData
 {
     private List<Person> peoplelist;
+    private List<Reserve>listroom;
+    private List<Room>listroominfo;
+    private List<RoomSure>ConfirmedRoom;
+    
+    
     public ListData()
     {
         this.peoplelist = new List<Person>();
+        this.listroom= new List<Reserve>();
+        this.listroominfo= new List<Room>();
     }
+    public void RoomAdd(Reserve reserve)
+    {
+        this.listroom.Add(reserve);
+    }
+
     public void PeopleAdd(Person person)
     {
        this.peoplelist.Add(person);
     }
+    public void RoomInfoAdd(Room room)
+    {
+        this.listroominfo.Add(room);
+    }
+    
     //ตัวเช็คนักเรียนหรือครู
    public bool CheckRegis(string name , string surname)
    {
@@ -97,13 +114,43 @@ class ListData
    {
     foreach(Person person in peoplelist)
     {
-        if(person is Student student)
-        {
-         Console.WriteLine("{0} {1} Class:{2}", student.GetName(),student.GetSurname(),student.GetClassYear());
-        }
        
+            if(person is Student student)
+            {
+               
+                    Console.WriteLine("{0} {1} Class:{2} ", student.GetName(),student.GetSurname(),student.GetClassYear());
+            }
+        
     }
+        Console.WriteLine("Room That Reserved");
+     foreach(Reserve reserveroom in listroom)
+     {
+        if(reserveroom is Room room)
+        {
+            Console.WriteLine("Reserve: {0} Amount: {1}",reserveroom.GetName(),reserveroom.GetAmount());
+        }
+     }
    }
+   //เงื่อนไขขนาดห้อง
+   public bool RoomAmountcheck(string name,int amount )
+   {
+           foreach(Room room in listroominfo)
+            {
+                if(amount > room.GetAmount()&& name.Equals(room.GetName()))
+                {
+                    return false;
+                }
+            else if(amount <= room.GetAmount()&& name.Equals(room.GetName()))
+                {
+                    return true;
+                }
+            }
+            return RoomAmountcheck(name,amount);
+        
+        
+     }
+     
+   
    //checkว่าคือใคร
    public void WHoisthat(string id , string password)
    {
@@ -125,6 +172,8 @@ class ListData
         }
     }
    }
+  
+
     
 
 

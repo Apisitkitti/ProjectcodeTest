@@ -1,23 +1,23 @@
 using System;
 class Room
 {
-    string size;
+    string name;
     int amount;
-    bool reservation;
-    public Room(string size,int amount,bool reservation )
+    public Room(string name,int amount )
     {
-        this.size = size;
+        this.name = name;
         this.amount = amount;
-        this.reservation = reservation;
     }
-    public string GetSize()
-    {
-        return this.size;
-    }
+   
     public int GetAmount()
     {
         return this.amount;
     }
+    public string GetName()
+    {
+        return this.name;
+    }
+
     
 
 }
