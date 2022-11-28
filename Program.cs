@@ -9,25 +9,25 @@ enum MainMenu
 enum RegisterMenu
 {
     Student = 1,
-    Teacher
+    Teacher,
+    Back
 }
 enum StudentMenu
 {
-    
     Reserve = 1,
-    Check,
+    CheckRoomm,
     TLoguot
 }
 enum TeacherMenu
 {
     Accept = 1,
+    CheckRoomm,
     Check,
     TLoguot
 }
  class Program
 {
     static ListData data; 
-    
     public static void Main()
     {
         PersonListLoad();
@@ -58,7 +58,7 @@ enum TeacherMenu
         Console.WriteLine("--------------------------");
         Console.WriteLine("         Register.        ");
         Console.WriteLine("--------------------------");
-        Console.WriteLine("1.Student\n2.Teacher");
+        Console.WriteLine("1.Student\n2.Teacher\n3.Back");
         Console.WriteLine("--------------------------");
         ChooseRegisterMenuFromKeyboard();
     }
@@ -90,6 +90,8 @@ enum TeacherMenu
             break;
             case RegisterMenu.Teacher: NewTeacher();
             break;
+            case RegisterMenu.Back: BackToMainMemu();
+            break;
         }
     }
     static void NewStudent()
@@ -108,7 +110,9 @@ enum TeacherMenu
         else if(checkdata == false)
         {
             Console.Clear();
-            Console.WriteLine("This user already register");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("This user already register!!");
+            Console.WriteLine("----------------------------");
             Console.ReadLine();
             NewStudent();
         }
@@ -129,7 +133,9 @@ enum TeacherMenu
         else if(checkdata == false)
         {
             Console.Clear();
-            Console.WriteLine("This user already register");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("This user already register!!");
+            Console.WriteLine("----------------------------");
             Console.ReadLine();
             NewTeacher();
         }  
@@ -141,7 +147,6 @@ enum TeacherMenu
     static void LoginFromKeyboard()
     {
         Console.Clear();
-        Console.WriteLine("");
         Console.WriteLine("--------------------------");
         Console.WriteLine("           Login.         ");
         Console.WriteLine("--------------------------");
@@ -165,7 +170,7 @@ enum TeacherMenu
             Console.Clear();
             Console.WriteLine("--------------------------");
             Console.WriteLine("  Invalid Email/Password");
-            Console.WriteLine("    Please login again");
+            Console.WriteLine("   !Please login again!");
             Console.WriteLine("--------------------------");
             PressToContinue();
         }
@@ -179,7 +184,7 @@ enum TeacherMenu
             Console.WriteLine("---------------------------------------");
             data.WHoisthat(id,password);
             Console.WriteLine("---------------------------------------");
-            Console.WriteLine("Choose Menu\n1.Reserve room\n2.Check Student\n3.Logout");
+            Console.WriteLine("Choose Menu\n1.Reserve room\n2.Check ReserveRoom\n3.Logout");
             Console.WriteLine("---------------------------------------");
             Console.Write("please choose your Menu : ");
             StudentMenu menu = (StudentMenu)(int.Parse(Console.ReadLine()));
@@ -190,11 +195,11 @@ enum TeacherMenu
         {
             switch(menu)
             {
-               case StudentMenu.Reserve:Reserve();
+               case StudentMenu.Reserve: Reserve();
                break; 
-               case StudentMenu.Check:Display_tudent_CheckList();
+               case StudentMenu.CheckRoomm: CheckReserveRoom();
                break;
-               case StudentMenu.TLoguot:BackToMainMemu();
+               case StudentMenu.TLoguot: BackToMainMemu();
                break;
             }
         } 
@@ -208,7 +213,7 @@ enum TeacherMenu
             Console.WriteLine("---------------------------------------");
             data.WHoisthat(id,password);
             Console.WriteLine("---------------------------------------");
-            Console.WriteLine("Choose Menu\n1.Accept room\n2.Check Student\n3.Logout");
+            Console.WriteLine("Choose Menu\n1.Accept room\n2.Check ReserveRoom\n3.Check Student\n4.Logout");
             Console.WriteLine("---------------------------------------");
             Console.Write("please choose your Menu : ");
             TeacherMenu menu = (TeacherMenu)(int.Parse(Console.ReadLine()));
@@ -219,42 +224,43 @@ enum TeacherMenu
         {
             switch(menu)
             {
-               case TeacherMenu.Accept:AdminConfirm();
+               case TeacherMenu.Accept: AdminConfirm();
                break; 
-               case TeacherMenu.Check:Display_tudent_CheckList();
+               case TeacherMenu.CheckRoomm: CheckReserveRoom();
                break;
-               case TeacherMenu.TLoguot:BackToMainMemu();
+               case TeacherMenu.Check: Display_Student_CheckList();
+               break;
+               case TeacherMenu.TLoguot: BackToMainMemu();
                break;
             }
         } 
-        static void Display_tudent_CheckList()
+        static void Display_Student_CheckList()
         {
+            Console.Clear();
             data.FetchData();
+            Console.WriteLine("");
+            PressToContinue();
         }  
         static void AdminConfirm()
         {
            Console.Clear();
            if(data.CheckDelete()== false)
            {
-            Console.WriteLine("You dont have any reserve room");
+            Console.WriteLine("You dont have any reserve room!!");
             Console.ReadLine();
             BackToMainMemu();
            }
            else if(data.CheckDelete()== true)
            {
              data.ReserveRoom();
-             Console.WriteLine("************************************");
-             Console.Write("Pls CHoose Info to reject: ");
+             Console.WriteLine("--------------------------------------");
+             Console.Write("please Choose Info to reject : ");
             int choose = InputChoice();
             data.RoomDete(choose-1);
             Console.ReadLine();
             BackToMainMemu();
            }
-            
-           
         }
-        
-
     }
     //ส่วนการจะใช้กกรอกข้อมูล
     public static string InputName()
@@ -289,12 +295,12 @@ enum TeacherMenu
     }
     public static string Password()
     {
-      Console.Write("please input your Password: ");
+      Console.Write("please input your Password : ");
       return Console.ReadLine();
     }
     public static int InputAmount()
     {
-        Console.Write("Pls input amount of your student: ");
+        Console.Write("please input amount of your student : ");
         return int.Parse(Console.ReadLine());
     }
     public static int InputChoice()
@@ -311,7 +317,9 @@ enum TeacherMenu
         static void CheckReserveRoom()
         {
         Console.Clear();
+
         Program.data.ReserveRoom();
+        Console.WriteLine("");
         PressToContinue();
         }
 
@@ -319,14 +327,19 @@ enum TeacherMenu
         static void Reserve()
         {
         Console.Clear();
-        Console.WriteLine("Pls choose your room");
-        Console.WriteLine("1.room 983\n2.room993 ");
+        Console.WriteLine("--------------------------");
+        Console.WriteLine("         Room List        ");
+        Console.WriteLine("--------------------------");
+        Console.WriteLine("1.room 403\n2.room 604\n3.Gym ");
+        Console.WriteLine("--------------------------");
+        Console.Write(" please choose your room : ");
         int roomNum = int.Parse(Console.ReadLine());
+        Console.WriteLine("--------------------------");
             if(roomNum == 1)
             {
                 string name = InputName();
                 string surname = InputSurname(); 
-                string Roomname = "983" ;
+                string Roomname = "403" ;
                 int amount = InputAmount();
                 Reserve reserve = new Reserve(name,surname,Roomname,amount);
                 
@@ -337,7 +350,9 @@ enum TeacherMenu
                 }
                 else if(data.RoomAmountcheck(Roomname,amount)  == false)
                 {
-                    Console.WriteLine("YOur student is more");
+                    Console.Clear();
+                    Console.WriteLine("Your student is more!!");
+                    Console.WriteLine("");
                     PressToContinue();
                 }     
             }
@@ -345,7 +360,7 @@ enum TeacherMenu
             {
                 string name = InputName();
                 string surname = InputSurname();
-                string Roomname = "993" ;
+                string Roomname = "604" ;
                 int amount = InputAmount();
                 Reserve reserve = new Reserve(name,surname,Roomname,amount);
                 if(data.RoomAmountcheck(Roomname,amount)  == true)
@@ -355,18 +370,40 @@ enum TeacherMenu
                 }
                 else if(data.RoomAmountcheck(Roomname,amount)  == false)
                 {
-                    Console.WriteLine("This room is already reserve");
+                    Console.Clear();
+                    Console.WriteLine("Your student is more!!");
+                    Console.WriteLine("");
+                    PressToContinue();
+                }
+            }
+            else if(roomNum == 3)
+            {
+                string name = InputName();
+                string surname = InputSurname();
+                string Roomname = "Gym" ;
+                int amount = InputAmount();
+                Reserve reserve = new Reserve(name,surname,Roomname,amount);
+                if(data.RoomAmountcheck(Roomname,amount)  == true)
+                {
+                 Program.data.RoomAdd(reserve);
                     ChooseMenu();
+                }
+                else if(data.RoomAmountcheck(Roomname,amount)  == false)
+                {
+                    Console.WriteLine("Your student is more!!");
+                    PressToContinue();
                 }
             }
         }
         //ห้อง
         static void Room()
         {
-            Room room1 = new Room("983",30);
-            Room room2 = new Room("993",40);
+            Room room1 = new Room("403",30);
+            Room room2 = new Room("604",40);
+            Room room3 = new Room("Gym",150);
             data.RoomInfoAdd(room1);
             data.RoomInfoAdd(room2);
+            data.RoomInfoAdd(room3);
         }
     
         

@@ -121,28 +121,31 @@ class ListData
    //ส่วนที่เป็นสำหรับนำข้อมูลมาโชว์ออกมาFetch
    public void FetchData()
    {
+    int count = 0;
     foreach(Person person in peoplelist)
-    {
+    {       
+            count++;
             if(person is Student student)
             {
-               
-                    Console.WriteLine("{0} {1} Class:{2} ", student.GetName(),student.GetSurname(),student.GetClassYear());
+              Console.WriteLine("{0}. {1} {2} Class: {3} ",count, student.GetName(),student.GetSurname(),student.GetClassYear());
             }
     }     
    }
    public void ReserveRoom()
    {
+    int count = 0;
     if(listroom.Count == 0)
     {
-        Console.WriteLine("Not have any reserve");
+        Console.WriteLine("Not have any reserve!!");
     }
     else if(listroom.Count > 0)
     {
         foreach(Reserve reserveroom in listroom)
      {
+        count++;
         if(reserveroom is Room room)
         {
-            Console.WriteLine("{0} {1} Reserve: {2} Amount: {3}",reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
+            Console.WriteLine("{0}. {1} {2} | Reserve: {2} |Amount: {3}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
         }
      }
     }
