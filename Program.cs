@@ -234,11 +234,13 @@ enum TeacherMenu
         static void AdminConfirm()
         {
            Console.Clear();
-           data.FetchData();
+           data.ReserveRoom();
            Console.WriteLine("************************************");
            Console.Write("Pls CHoose Info to accept/reject: ");
            int choose = InputChoice();
-           data.RoomDete(choose-1);
+            data.RoomDete(choose-1);
+            Console.ReadLine();
+            BackToMainMemu();
            
         }
         
@@ -299,7 +301,7 @@ enum TeacherMenu
         static void CheckReserveRoom()
         {
         Console.Clear();
-        Program.data.FetchData();
+        Program.data.ReserveRoom();
         PressToContinue();
         }
 
@@ -312,16 +314,18 @@ enum TeacherMenu
         int roomNum = int.Parse(Console.ReadLine());
             if(roomNum == 1)
             {
-                string name = "983" ;
+                string name = InputName();
+                string surname = InputSurname(); 
+                string Roomname = "983" ;
                 int amount = InputAmount();
-                Reserve reserve = new Reserve(name,amount);
+                Reserve reserve = new Reserve(name,surname,Roomname,amount);
                 
-                if(data.RoomAmountcheck(name,amount)  == true)
+                if(data.RoomAmountcheck(Roomname,amount)  == true)
                 {
                  Program.data.RoomAdd(reserve);
                  ChooseMenu();
                 }
-                else if(data.RoomAmountcheck(name,amount)  == false)
+                else if(data.RoomAmountcheck(Roomname,amount)  == false)
                 {
                     Console.WriteLine("YOur student is more");
                     PressToContinue();
@@ -329,15 +333,17 @@ enum TeacherMenu
             }
             else if(roomNum == 2)
             {
-                string name = "993" ;
+                string name = InputName();
+                string surname = InputSurname();
+                string Roomname = "993" ;
                 int amount = InputAmount();
-                Reserve reserve = new Reserve(name,amount);
-                if(data.RoomAmountcheck(name,amount)  == true)
+                Reserve reserve = new Reserve(name,surname,Roomname,amount);
+                if(data.RoomAmountcheck(Roomname,amount)  == true)
                 {
                  Program.data.RoomAdd(reserve);
                  ChooseMenu();
                 }
-                else if(data.RoomAmountcheck(name,amount)  == false)
+                else if(data.RoomAmountcheck(Roomname,amount)  == false)
                 {
                     Console.WriteLine("THis room is already reserve");
                     ChooseMenu();
@@ -347,8 +353,8 @@ enum TeacherMenu
         //ห้อง
         static void Room()
         {
-            Room room1 = new Room("983",30);
-            Room room2 = new Room("993",40);
+            Room room1 = new Room("a","b","983",30);
+            Room room2 = new Room("a","b","993",40);
             data.RoomInfoAdd(room1);
             data.RoomInfoAdd(room2);
         }

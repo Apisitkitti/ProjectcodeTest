@@ -119,20 +119,20 @@ class ListData
    {
     foreach(Person person in peoplelist)
     {
-       
             if(person is Student student)
             {
                
                     Console.WriteLine("{0} {1} Class:{2} ", student.GetName(),student.GetSurname(),student.GetClassYear());
             }
-        
-    }
-        Console.WriteLine("Room That Reserved");
+    }     
+   }
+   public void ReserveRoom()
+   {
      foreach(Reserve reserveroom in listroom)
      {
         if(reserveroom is Room room)
         {
-            Console.WriteLine("Reserve: {0} Amount: {1}",reserveroom.GetName(),reserveroom.GetAmount());
+            Console.WriteLine("{0} {1} Reserve: {2} Amount: {3}",reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetName(),reserveroom.GetAmount());
         }
      }
    }
@@ -141,11 +141,11 @@ class ListData
    {
            foreach(Room room in listroominfo)
             {
-                if(amount > room.GetAmount()&& name.Equals(room.GetName()))
+                if(amount > room.GetAmount()&& name.Equals(room.GetRoomname()))
                 {
                     return false;
                 }
-            else if(amount <= room.GetAmount()&& name.Equals(room.GetName()))
+            else if(amount <= room.GetAmount()&& name.Equals(room.GetRoomname()))
                 {
                     return true;
                 }
@@ -176,17 +176,6 @@ class ListData
         }
     }
    }
- //checkว่าห้องโล่งยัง
- public bool Empty()
- {
-    if(listroom.Count <0)
-    {
-        return false;
-    }
-    else if(listroom.Count > 0)
-    {
-        return true;
-    }
-    return Empty();
- }
+ 
+ 
 }
