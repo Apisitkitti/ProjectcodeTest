@@ -265,10 +265,7 @@ enum TeacherMenu
               data.RoomDete(choose-1);
               PressToContinue();
             }
-<<<<<<< HEAD
-           
-=======
->>>>>>> First015
+
            }
         }
     }
@@ -426,7 +423,7 @@ enum TeacherMenu
             Room room1 = new Room("403",30);
             Room room2 = new Room("604",40);
             Room room3 = new Room("Gym",150);
-            Room room4 = new Room("Theater",150);
+            Room room4 = new Room("Theater",100);
             data.RoomInfoAdd(room1);
             data.RoomInfoAdd(room2);
             data.RoomInfoAdd(room3);
