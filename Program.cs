@@ -254,11 +254,18 @@ enum TeacherMenu
            {
              data.ReserveRoom();
              Console.WriteLine("--------------------------------------");
-             Console.Write("please Choose Info to reject : ");
+             Console.Write("please Choose Info to reject room (Input -1 to for back to main menu ) : ");
             int choose = InputChoice();
-            data.RoomDete(choose-1);
-            Console.ReadLine();
-            BackToMainMemu();
+            if(choose == -1)
+            {
+                 BackToMainMemu();
+            }
+            else
+            {
+              data.RoomDete(choose-1);
+              PressToContinue();
+            }
+           
            }
         }
     }
