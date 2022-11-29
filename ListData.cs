@@ -6,7 +6,7 @@ class ListData
     private List<Person> peoplelist;
     private List<Reserve>listroom;
     private List<Room>listroominfo;
-    private List<RoomSure> RoomSureList;
+    
    
     
     
@@ -15,8 +15,6 @@ class ListData
         this.peoplelist = new List<Person>();
         this.listroom= new List<Reserve>();
         this.listroominfo= new List<Room>();
-        this.RoomSureList = new List<RoomSure>();
-      
     }
     public void RoomAdd(Reserve reserve)
     {
@@ -44,7 +42,7 @@ class ListData
    public bool CheckRegis(string name , string surname)
    {
     
-     {
+     
         foreach(Person person in peoplelist)
         {
              if(person is Teacher teacher)
@@ -62,7 +60,7 @@ class ListData
                 }
               }
              
-        }
+        
      }
      return true ;
    }
@@ -147,10 +145,11 @@ class ListData
         count++;
         if(reserveroom is Room room)
         {
-            Console.WriteLine("{0}. {1} {2} | Reserve: {3} |Amount: {4}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
+            Console.WriteLine("{0}. {1} {2} | Reserve: {3} |Amount: {4} || Activity: {5}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount(),reserveroom.GetActivity());
         }
      }
     }
+    
      
    }
    
@@ -215,5 +214,17 @@ class ListData
             return false;
         }
     }
+ //CheckROomAgain()
+    public bool CheckRoomSUm(string roomname,string name, string surname)
+    {
+        foreach(Reserve reserve in listroom)
+        {
+             if(name.Equals(reserve.GetName())&&roomname.Equals(reserve.GetRoomname())&&surname.Equals(reserve.GetSurname()))
+                {
+                    return false;
+                } 
+        }
+        return true;
  
+    }
 }
