@@ -6,7 +6,7 @@ class ListData
     private List<Person> peoplelist;
     private List<Reserve>listroom;
     private List<Room>listroominfo;
-    
+    private List<RoomSure> RoomSureList;
    
     
     
@@ -15,6 +15,7 @@ class ListData
         this.peoplelist = new List<Person>();
         this.listroom= new List<Reserve>();
         this.listroominfo= new List<Room>();
+        this.RoomSureList = new List<RoomSure>();
       
     }
     public void RoomAdd(Reserve reserve)
@@ -32,10 +33,11 @@ class ListData
         this.listroominfo.Add(room);
     }
     public void RoomDete(int choose)
-     {
+    {
        listroom.RemoveAt(choose);
-     }
-    
+    }
+     
+     
    
     
     //ตัวเช็คนักเรียนหรือครู
@@ -145,7 +147,7 @@ class ListData
         count++;
         if(reserveroom is Room room)
         {
-            Console.WriteLine("{0}. {1} {2} | Reserve: {2} |Amount: {3}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
+            Console.WriteLine("{0}. {1} {2} | Reserve: {3} |Amount: {4}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount());
         }
      }
     }
