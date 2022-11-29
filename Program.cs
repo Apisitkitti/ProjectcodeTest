@@ -169,7 +169,7 @@ enum TeacherMenu
         {
             Console.Clear();
             Console.WriteLine("--------------------------");
-            Console.WriteLine("  Invalid Email/Password");
+            Console.WriteLine("  Invalid ID/Password");
             Console.WriteLine("   !Please login again!");
             Console.WriteLine("--------------------------");
             PressToContinue();
