@@ -265,7 +265,10 @@ enum TeacherMenu
               data.RoomDete(choose-1);
               PressToContinue();
             }
+<<<<<<< HEAD
            
+=======
+>>>>>>> First015
            }
         }
     }
@@ -316,7 +319,7 @@ enum TeacherMenu
     }
     public static string InputActivity()
     {
-        Console.Write("please input your activity to do in this room :");
+        Console.Write("please input your activity to do in this room : ");
         return Console.ReadLine();
     }
     
@@ -339,14 +342,14 @@ enum TeacherMenu
         static void Reserve()
         {
         Console.Clear();
-        Console.WriteLine("--------------------------");
-        Console.WriteLine("         Room List        ");
-        Console.WriteLine("--------------------------");
-        Console.WriteLine("1.room 403\n2.room 604\n3.Gym ");
-        Console.WriteLine("--------------------------");
-        Console.Write(" please choose your room : ");
+        Console.WriteLine("--------------------------------");
+        Console.WriteLine("            Room List           ");
+        Console.WriteLine("--------------------------------");
+        Console.WriteLine("1.room 403 | Max size 30 people\n2.room 604 | Max size 40 people\n3.Gym      | Max size 150 people\n4.Theater  | Max size 100 people");
+        Console.WriteLine("--------------------------------");
+        Console.Write("please choose your room : ");
         int roomNum = int.Parse(Console.ReadLine());
-        Console.WriteLine("--------------------------");
+        Console.WriteLine("--------------------------------");
             if(roomNum == 1)
             {
                 string name = InputName();
@@ -372,6 +375,16 @@ enum TeacherMenu
                 string name = InputName();
                 string surname = InputSurname();
                 string Roomname = "Gym" ;
+                int amount = InputAmount();
+                string activity = InputActivity();
+                Reserve reserve = new Reserve(name,surname,Roomname,amount,activity);   
+                AddRoom(ref Roomname,ref amount,ref name,ref surname, ref reserve);
+            }
+            else if(roomNum == 4)
+            {
+                string name = InputName();
+                string surname = InputSurname();
+                string Roomname = "Theater" ;
                 int amount = InputAmount();
                 string activity = InputActivity();
                 Reserve reserve = new Reserve(name,surname,Roomname,amount,activity);   
@@ -405,9 +418,7 @@ enum TeacherMenu
                 Console.WriteLine("");
                 PressToContinue();
             }
-             
-            
-                
+               
         }
         //ห้อง
         static void Room()
@@ -415,10 +426,11 @@ enum TeacherMenu
             Room room1 = new Room("403",30);
             Room room2 = new Room("604",40);
             Room room3 = new Room("Gym",150);
+            Room room4 = new Room("Theater",150);
             data.RoomInfoAdd(room1);
             data.RoomInfoAdd(room2);
             data.RoomInfoAdd(room3);
-            
+            data.RoomInfoAdd(room4);
         }
     
         

@@ -7,9 +7,6 @@ class ListData
     private List<Reserve>listroom;
     private List<Room>listroominfo;
     
-   
-    
-    
     public ListData()
     {
         this.peoplelist = new List<Person>();
@@ -21,7 +18,6 @@ class ListData
         this.listroom.Add(reserve);
     }
     
-
     public void PeopleAdd(Person person)
     {
        this.peoplelist.Add(person);
@@ -35,9 +31,6 @@ class ListData
        listroom.RemoveAt(choose);
     }
      
-     
-   
-    
     //ตัวเช็คนักเรียนหรือครู
    public bool CheckRegis(string name , string surname)
    {
@@ -59,8 +52,6 @@ class ListData
                     return false;
                 }
               }
-             
-        
      }
      return true ;
    }
@@ -145,14 +136,12 @@ class ListData
         count++;
         if(reserveroom is Room room)
         {
-            Console.WriteLine("{0}. {1} {2} | Reserve: {3} |Amount: {4} || Activity: {5}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount(),reserveroom.GetActivity());
+            Console.WriteLine("{0}. {1} {2} | Reserve: {3} | Amount: {4} \n   Activity: {5}",count,reserveroom.GetName(),reserveroom.GetSurname(),reserveroom.GetRoomname(),reserveroom.GetAmount(),reserveroom.GetActivity());
         }
      }
     }
     
-     
    }
-   
 
    //เงื่อนไขขนาดห้อง
    public bool RoomAmountcheck(string name,int amount )
@@ -171,8 +160,6 @@ class ListData
             return RoomAmountcheck(name,amount);  
      }
      
-     
-   
    //checkว่าคือใคร
    public void WHoisthat(string id , string password)
    {
