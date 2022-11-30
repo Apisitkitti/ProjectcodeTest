@@ -290,11 +290,6 @@ enum TeacherMenu
         Console.Write("please Input class year : ");
         return Console.ReadLine();
     }
-    public static string InputRole()
-    {
-        Console.Write("please input your role : ");
-        return Console.ReadLine();
-    }
     public static string InputCitizenId()
     {
         Console.Write("please input yor CitizenID : ");
